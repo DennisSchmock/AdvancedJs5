@@ -56,7 +56,7 @@ app.post("/api/login", function(req,res){
       return
   }
     userFacade.login(userName,password,function(data){
-        if(data.succes === false) res.status(401).json({message: "No authentication"})
+        if(data.succes === false) res.status(401).json({message: "Something went wrong, user is not logged in"})
         else {
             var payload = {userName: data.user.username}
             var token = JWT.sign(payload,jwtOptions.secretOrKey);
