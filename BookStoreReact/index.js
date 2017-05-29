@@ -45,3 +45,22 @@ app.delete("/api/books/:id", function(req,res){
         })
     })
 })
+
+app.post("/api/login", function(req,res){
+    if(req.body.userName && req.body.password){
+    var userName = req.body.userName;
+    var password = req.body.password;
+  }
+  else{
+      res.json({message:"Please provide body with userName and password"})
+      return
+  }
+    userFacade.login(userName,password,function(data){
+        if(data.succes === false) res.status(401).json({message: "No authentication"})
+        else {
+            var payload = {userName: data.user.username}
+            var token = JWT.sign(payload,jwtOptions.secretOrKey);
+            res.json({message: "ok", token:token})
+        }
+    })
+})
