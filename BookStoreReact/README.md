@@ -1,6 +1,6 @@
 # React Books - example project
 
-# Excercise not done yet!
+# Excercise not completed yet!
 
 Requires local MongoDB running at localhost 127.0.0.1
 
